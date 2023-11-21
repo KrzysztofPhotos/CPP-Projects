@@ -13,7 +13,7 @@ public:
     {
         lenght = x;
         breadth = y;
-    }
+    };
     void area()
     {
         cout << "Area of house " << lenght * breadth << endl;
