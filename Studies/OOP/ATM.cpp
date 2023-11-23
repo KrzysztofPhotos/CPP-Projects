@@ -1,177 +1,64 @@
 #include <iostream>
-#include <conio.h>
 #include <string>
+#include <conio.h>
 using namespace std;
 
-/*  MINI PROJECT - ATM
-    -> Check balance
-    -> Cash withdraw
-    -> User Details
-    -> Update Mobile No.
-*/
 
-class atm
-{
-private:
-    long int account_no;
-    string name;
-    int PIN;
-    double balance;
-    string mobile_no;
-
-public:
-
-    void setData(long int account_no_a, string name_a, int PIN_a, double balance_a, string mobile_no_a)
-    {
-        account_no = account_no_a;
-        name = name_a;
-        PIN = PIN_a;
-        balance = balance_a;
-        mobile_no = mobile_no_a;
-    }
-
-    long int getAccountNo()
-    {
-        return account_no;
-    }
-
-    string getName()
-    {
-        return name;
-    }
-
-    int getPIN()
-    {
-        return PIN;
-    }
-
-    double getBalance()
-    {
-        return balance;
-    }
-
-    string getMobileNo()
-    {
-        return mobile_no;
-    }
-
-    void setMobile(string mob_prev, string mob_new)
-    {
-        if (mob_prev == mobile_no)
-        {
-            mobile_no = mob_new;
-            cout << "Sucessfully updated mobile no.";
-            _getch();
-        }
-    }
-
-    void cashWithDraw(int amount_a)
-    {
-        if (amount_a > 0 && amount_a < balance)
-        {
-            balance -= amount_a;
-            cout << endl << "Please collect your cash";
-            cout << endl << "Available balance: " << balance;
-            _getch();
-        }
-        else
-        {
-            cout << endl << "Invalid input od insufficient balance";
-            _getch();
-        }
-    }
-
-
+struct car {
+    string brand;
+    string model;
+    double price;
+    double price_per_kilometer;
+    string license_plate;
+    string type;
 };
 
 
-int main()
-{
-    int choice = 0, enterPIN;
-    long int enterAccountNo;
+int main() {
+    car audi_RS6{ "Audi", "RS6", 400000, 3.29, "KR 82012", "Sport" };
+    car audi_A8{ "Audi", "A8", 150000, 2.40, "KK 82762", "Combi" };
+    car mercedes_cla200{ "Mercedes", "CLA 200 AMG", 400000, 4.29, "KR 76404", "Sport" };
+    car tesla_model_s{ "Tesla", "Model S", 800000, 2.20, "EL 12345", "Electric" };
+    car chevrolet_camaro{ "Chevrolet", "Camaro", 500000, 4.50, "CC 54321", "Convertible" };
+    car nissan_altima{ "Nissan", "Altima", 300000, 2.90, "NA 98765", "Sedan" };
+    car jaguar_f_type{ "Jaguar", "F-Type", 600000, 5.20, "JF 23456", "Coupe" };
+    car subaru_outback{ "Subaru", "Outback", 350000, 3.00, "SO 87654", "SUV" };
 
-    system("cls");
-
-    atm user1;
-
-    user1.setData(1234567, "Tim", 1111, 45000.90, "9087654321");
+    int choice;
 
     do
     {
         system("cls");
 
-        cout << endl << "**** Welcome to ATM ****" << endl;
-        cout << endl << "Enter Your Account No ";
-        cin >> enterAccountNo;
+        cout << endl << "*** Welcome to our car rental services ***";
+        cout << endl << "Select options:";
+        cout << endl << "1. Check available cars to rent";
+        cout << endl << "2. Login to your account";
+        cout << endl << "  ﹂ Check your balance";
+        cout << endl << "  ﹂ Show your last rides";
+        cout << endl << "... more in future";
+        cout << endl << endl << "5. Exit";
 
-        cout << endl << "Enter PIN ";
-        cin >> enterPIN;
+        cin >> choice;
 
-
-        if ((enterAccountNo == user1.getAccountNo()) && (enterPIN == user1.getPIN()))
+        switch (choice)
         {
-            do
-            {
-                int amount = 0;
-                string oldMobileNo, newMobileNo;
+        case 1:
+            cout << "AVAILABLE CARS: ";
+            _getch();
+            break;
+        case 2:
 
-                system("cls");
+        case 5:
+            exit(0);
 
-                cout << endl << "**** Welcome to ATM ****" << endl;
-                cout << endl << "Select Options: ";
-                cout << endl << "1. Check Balance";
-                cout << endl << "2. Cash withdraw";
-                cout << endl << "3. Show user details";
-                cout << endl << "4. Update mobile no.";
-                cout << endl << "5. Exit" << endl;
-                cin >> choice;
 
-                switch (choice)
-                {
-                case 1:
-                    cout << endl << "Your balance is: " << user1.getBalance();
-
-                    _getch();
-                    break;
-
-                case 2:
-                    cout << endl << "Enter the amount: ";
-                    cin >> amount;
-                    user1.cashWithDraw(amount);
-                    break;
-
-                case 3:
-                    cout << endl << "*** User Details are : ";
-                    cout << endl << "-> Account no " << user1.getAccountNo();
-                    cout << endl << "-> Name       " << user1.getName();
-                    cout << endl << "-> Balance    " << user1.getBalance();
-                    cout << endl << "-> Mobile no  " << user1.getMobileNo();
-
-                    _getch();
-                    break;
-
-                case 4:
-                    cout << endl << "Enter old mobile no. ";
-                    cin >> oldMobileNo;
-
-                    cout << endl << "Enter New Mobile No. ";
-                    cin >> newMobileNo;
-
-                    user1.setMobile(oldMobileNo, newMobileNo);
-                    break;
-
-                case 5:
-                    exit(0);
-
-                default:
-                    cout << endl << "Enter Vaild Data !!!";
-                }
-
-            } while (1); // MENU - condition will alway TRUE and loop is capable of running infinite times
-
+        default:
+            break;
         }
 
     } while (1);
+
 
     return 0;
 }
