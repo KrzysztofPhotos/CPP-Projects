@@ -39,6 +39,14 @@ int main()
     };
 
 
+    // now let's check the determinant
+
+    int cal_det = matrix1[0][0] * ((matrix1[1][1] * matrix1[2][2]) - (matrix1[1][2] * matrix1[2][1])) + (matrix1[1][0] * (-1) * ((matrix1[0][1] * matrix1[2][2]) - matrix1[2][1] * matrix1[0][2])) + (matrix1[2][0] * ((matrix1[0][1] * matrix1[1][2]) - (matrix1[1][1] * matrix1[0][2])));
+
+    cout << cal_det;
+
+     
+
 
     return 0;
 }
